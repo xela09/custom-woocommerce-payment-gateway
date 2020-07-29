@@ -1,0 +1,96 @@
+openapi: 3.0.0
+info:
+  title: stranded API
+  version: '1.0'
+  contact:
+    name: Alexa Geocadin
+    url: 'https://alex.virtuslogic.com.ph/'
+    email: alexandra.geocadin@virtuslogic.com.ph
+  termsOfService: 'https://alex.virtuslogic.com.ph/'
+  license:
+    name: MIT
+  description: Beginning API docs
+servers:
+  - url: 'http://localhost:8080'
+    description: 'Localhost:8080'
+paths:
+  '/announcements/{id}':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  sort:
+                    type: integer
+                  content:
+                    type: string
+                  is_admin:
+                    type: boolean
+                  is_active:
+                    type:
+                      - string
+                      - boolean
+                  created:
+                    type: object
+                    format: date-time
+                    properties:
+                      date:
+                        type: string
+                      timezone_type:
+                        type: string
+                      timezone:
+                        type: string
+                  modified:
+                    type:
+                      - string
+                      - object
+                    properties:
+                      date:
+                        type: string
+                        format: date-time
+                      timezon_type:
+                        type: number
+                      timezone:
+                        type: string
+              examples: {}
+      operationId: get-announcements
+      description: My GET request
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        description: uuid
+    post:
+      summary: ''
+      operationId: post-announcements
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: ''
+      operationId: put-announcements-id
+      responses:
+        '200':
+          description: OK
+    delete:
+      summary: ''
+      operationId: delete-announcements-id
+      responses:
+        '200':
+          description: OK
+components:
+  schemas: {}
+  securitySchemes:
+    API Key - 1:
+      type: oauth2
